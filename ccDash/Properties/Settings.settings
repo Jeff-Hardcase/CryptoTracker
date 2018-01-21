@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ccDash.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LogInfo" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="url_BtcPrice_GDAX" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://api.gdax.com/products/btc-usd/ticker</Value>
+    </Setting>
+    <Setting Name="url_EthPrice_GDAX" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://api.gdax.com/products/eth-usd/ticker</Value>
+    </Setting>
+    <Setting Name="url_BtcPrice_Gemini" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://api.gemini.com/v1/pubticker/btcusd</Value>
+    </Setting>
+    <Setting Name="url_EthPrice_Gemini" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://api.gemini.com/v1/pubticker/ethusd</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
