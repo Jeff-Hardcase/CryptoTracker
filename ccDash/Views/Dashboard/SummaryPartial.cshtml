@@ -6,57 +6,91 @@
             <tr class="row_height_20">
                 <td class="header_shim_100 bg_heading"><strong>Balances</strong></td>
                 <td class="header_shim_100 bg_heading cell_align_right"><i>Amount</i></td>
+                <td class="header_shim_100 bg_heading cell_align_right"><i>Average Price</i></td>
                 <td class="header_shim_100 bg_heading cell_align_right"><i>Current Price</i></td>
                 <td class="header_shim_100 bg_heading cell_align_right"><i>Total Cost</i></td>
                 <td class="header_shim_100 bg_heading cell_align_right"><i>Total Value</i></td>
-                <td class="header_shim_100"></td>
-                <td class="header_shim_100"></td>
-                <td class="header_shim_100 bg_heading"><strong>Deposits</strong></td>
-                <td class="header_shim_100 bg_heading"></td>
             </tr>
 
             @{var rowAsset = 0;}
             @foreach (var asset in Model.Balances)
             {
                 rowAsset += 1;
+                var avgPrice = (asset.AssetTotalCost / asset.AssetBalance);
 
                 <tr class="row_height_20">
                     <td>@asset.AssetSymbol</td>
                     <td class="cell_align_right">@asset.AssetBalance</td>
+                    <td class="cell_align_right">@avgPrice.ToString("C2")</td>
                     <td class="cell_align_right">@asset.UnitPrice.ToString("C2")</td>
                     <td class="cell_align_right">@asset.AssetTotalCost.ToString("C2")</td>
                     <td id="assetTotal" class="cell_align_right assetTotal" title="@asset.AssetReturn.ToString("P2")">@asset.AssetTotal.ToString("C2")</td>
-                    <td></td><td></td>
-
-                    @if (rowAsset == 1)
-                    {
-                        <td>@Model.Deposits.AssetSymbol</td>
-                                <td class="cell_align_right">@Model.Deposits.AssetBalance.ToString("C2")</td>
-                    }
-                    else
-                    {
-                        <td></td><td></td>
-                    }
                 </tr>
             }
 
             <tr class="row_height_20">
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td class="bg_heading"><strong>Return</strong></td>
-                <td class="bg_heading"><strong>Since</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
 
             @{  var accountTotal = Model.Balances.Sum(e => e.AssetTotal);
                 var percentReturn = (accountTotal - Model.Deposits.AssetBalance) / Model.Deposits.AssetBalance;
             }
             <tr class="row_height_20">
-                <td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td>
                 <td class="bg_heading cell_align_right"><strong>Total</strong></td>
                 <td class="cell_align_right">@accountTotal.ToString("C2")</td>
-                <td></td><td></td>
-                <td>@percentReturn.ToString("P2")</td>
-                <td>2017-Sep-07</td>
             </tr>
+
+            <tr class="row_height_20">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr class="row_height_20">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="header_shim_100 bg_heading cell_align_right"><strong>Deposits</strong></td>
+                <td class="cell_align_right">@Model.Deposits.AssetBalance.ToString("C2")</td>
+            </tr>
+
+            <tr class="row_height_20">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr class="row_height_20">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bg_heading"><strong>Since</strong></td>
+                <td class="bg_heading cell_align_right"><strong>Return</strong></td>
+            </tr>
+
+            <tr class="row_height_20">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2017-Sep-07</td>
+                <td class="cell_align_right">@percentReturn.ToString("P2")</td>
+            </tr>
+
         </tbody>
     </table>
 </div>
